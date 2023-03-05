@@ -1,0 +1,79 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+}
+
+.content {
+  max-width: 70rem;
+
+  margin: 0 auto;
+
+  padding: 0 1rem;
+}
+
+.listTodo {
+  margin-top: 4rem;
+}
+
+.headerInfo {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.contentCountTasks {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentCountTasks strong {
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--blue);
+}
+
+.contentCountTasks span {
+  width: 1.5rem;
+  height: 1.187rem;
+
+  background: var(--gray-400);
+  
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+
+  border-radius: 0.59rem;
+
+  padding: 0.20rem 0.30rem;
+
+  margin-left: 0.5rem;
+}
+
+.contentTasksConcluded {}
+
+.contentTasksConcluded strong {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--purple);
+}
+
+.contentTasksConcluded span {
+  width: 1.5rem;
+  height: 1.187rem;
+
+  background: var(--gray-400);
+  
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-align: center;
+
+  border-radius: 0.59rem;
+
+  padding: 0.30rem;
+
+  margin-left: 0.5rem;
+}
+
+.card {}

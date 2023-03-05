@@ -1,0 +1,58 @@
+.searchForm {
+  height: 3.5rem;
+  
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+  margin-top: -1.8rem;
+}
+
+.searchForm input {
+  width: 100%;
+
+  color: var(--white);
+
+  border: 1px solid var(--gray-500);
+  border-radius: 5px;
+
+  background: var(--gray-500);
+
+  padding: 1rem;
+}
+
+.searchForm input:focus {
+  border: 1px solid var(--purple-dark);
+}
+
+.contentButton {
+  margin-left: 0.5rem;
+}
+
+.contentButton div {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+}
+
+.contentButton div svg {
+  margin-left: 0.5rem;
+}
+
+.contentButton button[type="submit"] {
+  width: 5.625rem;
+  height: 100%;
+
+  background: var(--blue-dark);
+
+  font-size: 0.875rem;
+  font-weight: bold;
+  color: var(--white);
+
+  border-radius: 7px;
+
+  display: flex;
+  align-items: center;
+}
