@@ -1,11 +1,11 @@
-import { InvalidEvent, useState } from "react"
+import { FormEvent, InvalidEvent, useState } from "react"
 
 import { Plus, PlusCircle } from 'phosphor-react';
 
 import styles from './styles.module.css'
 
 interface ISearchProps {
-  onAddToDo: (todo: string) => void
+  onAddToDo: (task: string) => void
 }
 
 const Search = ({ onAddToDo }: ISearchProps) => {
@@ -15,8 +15,12 @@ const Search = ({ onAddToDo }: ISearchProps) => {
     event.target.setCustomValidity('Informe a tarefa!');
   }
 
-  function handleFormSubmit() {
-    onAddToDo(todo)
+  function handleFormSubmit(event: FormEvent) {
+    event.preventDefault();
+
+    onAddToDo(todo);
+
+    setTodo('');
   }
 
   return (
@@ -37,8 +41,6 @@ const Search = ({ onAddToDo }: ISearchProps) => {
               <PlusCircle size={17} />
             </div>
           </button>
-
-
         </div>
       </div>
 

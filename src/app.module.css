@@ -19,13 +19,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
 
-.contentCountTasks {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  margin-bottom: 1.5rem;
 }
 
 .contentCountTasks strong {
@@ -51,8 +46,6 @@
   margin-left: 0.5rem;
 }
 
-.contentTasksConcluded {}
-
 .contentTasksConcluded strong {
   font-size: 0.875rem;
   font-weight: 700;
@@ -75,5 +68,3 @@
 
   margin-left: 0.5rem;
 }
-
-.card {}

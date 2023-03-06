@@ -1,0 +1,70 @@
+.card {
+  height: 4.5rem;
+
+  background: var(--gray-500);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  padding: 1rem;
+}
+
+.card + div {
+  margin-top: 0.75rem;
+}
+
+.checkButton {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  background: transparent;
+
+  border: 1px solid var(--blue);
+  border-radius: 0.75rem;
+}
+
+.checkButtonConcluded {
+  width: 1.5rem;
+  height: 1.5rem;
+
+  background: var(--purple-dark);
+
+  border: 1px solid var(--purple-dark);
+  border-radius: 0.75rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.task {
+  display: flex;
+  flex: 1;
+
+  margin: 0 0.75rem;
+
+  color: var(--gray-100);
+}
+
+.taskConcluded {
+  display: flex;
+  flex: 1;
+
+  margin: 0 0.75rem;
+
+  color: var(--gray-100);
+
+  text-decoration: line-through;
+}
+
+.deleteButton {
+  background: transparent;
+  
+  border: 0;
+  border-radius: 2px;
+
+  color: var(--gray-300);
+
+  line-height: 0;
+}
