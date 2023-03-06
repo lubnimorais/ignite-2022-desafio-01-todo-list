@@ -1,12 +1,17 @@
-import { FormEvent, useState } from 'react'
+import { useState } from 'react'
+
+import { v4 as uuidV4 } from 'uuid';
+
+import { ClipboardText } from 'phosphor-react';
 
 import { Header } from './components/Header';
-import { Search } from './components/Search';
+import { AddTask } from './components/AddTask';
 import { Card } from './components/Card';
 
 import styles from './app.module.css';
 
 interface ITask {
+  id: string;
   task: string;
   done: boolean;
 }
@@ -16,16 +21,16 @@ function App() {
   const [tasksCountConcluded, setTasksCountConcluded] = useState(0);
 
   function handleAddTask(task: string) {
-    const data = { task, done: false };
+    const data = { id: uuidV4(), task, done: false };
 
     setTasks(oldState => [data, ...oldState]);
   }
 
-  function handleCheckTask(taskChecked: string) {
+  function handleCheckTask(id: string) {
     const tasksCopy = tasks;
 
     const tasksChecked = tasksCopy.map(task => {
-      if (task.task === taskChecked) {
+      if (task.id === id) {
         if (task.done) {
           return {
             ...task,
@@ -44,7 +49,7 @@ function App() {
 
     const taskConcluded = tasksChecked.reduce((accumulator, task) => {
       if (task.done) {
-        return accumulator + 1;
+        accumulator = accumulator + 1;
       }
 
       return accumulator;
@@ -56,10 +61,10 @@ function App() {
     setTasksCountConcluded(taskConcluded);
   }
 
-  function handleDeleteTask(taskDeleted: string) {
+  function handleDeleteTask(id: string) {
     const tasksCopy = tasks;
 
-    const tasksDeleted = tasksCopy.filter(task => task.task !== taskDeleted);
+    const tasksDeleted = tasksCopy.filter(task => task.id !== id);
 
     setTasks(tasksDeleted);
   }
@@ -69,7 +74,7 @@ function App() {
       <Header />
 
       <main className={styles.content}>
-        <Search onAddToDo={handleAddTask} />
+        <AddTask onAddToDo={handleAddTask} />
 
         <div className={styles.listTodo}>
           <header className={styles.headerInfo}>
@@ -85,13 +90,22 @@ function App() {
           </header>
 
           {
-            tasks.map(task => (
-              <Card
-                key={task.task}
-                task={task}
-                onCheckTask={handleCheckTask}
-                onDeleteTask={handleDeleteTask} />
-            ))
+            tasks.length === 0 ? (
+              <div className={styles.emptyTasksList}>
+                <ClipboardText size={56} />
+                <strong>Você ainda não tem tarefas cadastradas</strong>
+                <span>Crie tarefas e organize seus itens a fazer</span>
+              </div>
+            ) :
+              (
+                tasks.map(task => (
+                  <Card
+                    key={task.task}
+                    task={task}
+                    onCheckTask={handleCheckTask}
+                    onDeleteTask={handleDeleteTask} />
+                ))
+              )
           }
 
         </div>

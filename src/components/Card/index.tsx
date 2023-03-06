@@ -3,14 +3,15 @@ import { Trash, Check } from 'phosphor-react'
 import styles from './styles.module.css'
 
 interface ITask {
+  id: string;
   task: string;
   done: boolean;
 }
 
 interface ICardProps {
   task: ITask;
-  onCheckTask: (task: string) => void;
-  onDeleteTask: (task: string) => void;
+  onCheckTask: (id: string) => void;
+  onDeleteTask: (id: string) => void;
 }
 
 const Card = ({ task, onCheckTask, onDeleteTask }: ICardProps) => {
@@ -19,7 +20,7 @@ const Card = ({ task, onCheckTask, onDeleteTask }: ICardProps) => {
       <button
         type='button'
         className={task.done ? styles.checkButtonConcluded : styles.checkButton}
-        onClick={() => { onCheckTask(task.task) }}
+        onClick={() => { onCheckTask(task.id) }}
       >
         {task.done && (
           <Check size={16} color="#FFFFFF" />
@@ -33,7 +34,7 @@ const Card = ({ task, onCheckTask, onDeleteTask }: ICardProps) => {
       <button
         type='button'
         className={styles.deleteButton}
-        onClick={() => { onDeleteTask(task.task) }}
+        onClick={() => { onDeleteTask(task.id) }}
       >
         <Trash size={24} />
       </button>

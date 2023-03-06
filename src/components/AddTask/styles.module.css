@@ -55,4 +55,12 @@
 
   display: flex;
   align-items: center;
+
+  transition: background 0.5s, color 0.5s;
+}
+
+.contentButton button[type="submit"]:hover {
+  color: var(--gray-100);
+
+  background: var(--blue);
 }

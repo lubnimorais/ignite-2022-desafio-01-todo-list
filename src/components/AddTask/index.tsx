@@ -1,15 +1,20 @@
-import { FormEvent, InvalidEvent, useState } from "react"
+import { ChangeEvent, FormEvent, InvalidEvent, useState } from "react"
 
-import { Plus, PlusCircle } from 'phosphor-react';
+import { PlusCircle } from 'phosphor-react';
 
 import styles from './styles.module.css'
 
-interface ISearchProps {
+interface IAddTaskProps {
   onAddToDo: (task: string) => void
 }
 
-const Search = ({ onAddToDo }: ISearchProps) => {
-  const [todo, setTodo] = useState('');
+const AddTask = ({ onAddToDo }: IAddTaskProps) => {
+  const [task, setTask] = useState('');
+
+  function handleNewTask(event: ChangeEvent<HTMLInputElement>) {
+    event.target.setCustomValidity('');
+    setTask(event.target.value)
+  }
 
   function handleToDoInvalid(event: InvalidEvent<HTMLInputElement>) {
     event.target.setCustomValidity('Informe a tarefa!');
@@ -18,9 +23,9 @@ const Search = ({ onAddToDo }: ISearchProps) => {
   function handleFormSubmit(event: FormEvent) {
     event.preventDefault();
 
-    onAddToDo(todo);
+    onAddToDo(task);
 
-    setTodo('');
+    setTask('');
   }
 
   return (
@@ -29,9 +34,10 @@ const Search = ({ onAddToDo }: ISearchProps) => {
         <input
           type="text"
           placeholder="Adicione uma nova tarefa"
+          required
           onInvalid={handleToDoInvalid}
-          value={todo}
-          onChange={event => setTodo(event.target.value)}
+          value={task}
+          onChange={handleNewTask}
         />
 
         <div className={styles.contentButton}>
@@ -49,4 +55,4 @@ const Search = ({ onAddToDo }: ISearchProps) => {
   )
 }
 
-export { Search }
+export { AddTask }
